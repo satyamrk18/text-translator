@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  <style>
+    body {
+  display: block;
+  mask-image: 50px auto;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 350px;
+  width: 350px;
+  border: 2px solid black;
+  position: relative;
+}
+.head {
+  position: absolute;
+  top: 10px;
+}
+input {
+  height: 30px;
+  width: 200px;
+}
+button {
+  height: 35px;
+  width: 100px;
+  font-size: 20px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 10px;
+}
+#result
+{
+  color:red;
+  position:absolute;
+  bottom:25px;
+  display:block;
+  margin:10px auto;
+  height:35px;
+  width:200px;
+  border:2px solid black;
+  text-align: center;
+}
+h1{
+position:absolute;
+top:0px;
+}
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Translator</h1>
+    <form>
+      <input type="text" class="input" id="word" placeholder="enter a word" />
+      <button type="button" class="btn" onclick="ok()">translate</button>
+      <h2 id="result"></h2>
+    </form>
+    </div>
+
+    <script>
+      const englishToMarathi = {
+        hi: "नमस्ते",
+        hello: "हॅलो",
+        "how are you": "तुम्ही कसे आहात",
+        good: "चांगले",
+        bad: "वाईट",
+        yes: "हो",
+        no: "नाही",
+        "thank you": "धन्यवाद",
+        welcome: "स्वागत आहे",
+        bye: "बाय",
+        "good morning": "सुप्रभात",
+        "good afternoon": "शुभ अपराह्न",
+        "good evening": "शुभ संध्या",
+        "good night": "शुभ रात्रि",
+        please: "कृपया",
+        sorry: "माफ करा",
+      };
+      function ok() {
+        const input = document
+          .getElementById("word")
+          .value.trim()
+          .toLowerCase();
+        const result = document.getElementById("result");
+        const error = document.getElementById("error");
+        if (input == "") {
+          console.log("enter a word");
+          result.innerText = `Enter a word`;
+          result.style="color:red";
+        } else if (!englishToMarathi[input]) {
+          result.innerText = `word not found`;
+          result.style="color:red";
+        } else {
+          const output = englishToMarathi[input];
+          result.innerText = `${input} = ${output}`;
+          result.style="color:green";
+          console.log("successfully translate");
+        }
+      }
+    </script>
+  </body>
+</html>
